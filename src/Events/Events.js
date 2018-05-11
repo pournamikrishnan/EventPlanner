@@ -81,6 +81,15 @@ class Events extends Component {
     this.loadData(props)
   }
 
+  update() {
+    this.setState({
+      stateName: modelInstance.getStateCode(),
+      date: this.props.date,
+      enddate: this.props.enddate,
+    })
+  }
+
+
 
   render() {
     switch (this.state.status) {
@@ -119,7 +128,7 @@ class Events extends Component {
                   endTime: item.sales.public.startDateTime
                 };
                       return (
-                        <div>
+                        <div key={item.id}>
                             <img src={item.images[0].url}/>
                             <p className="legend">
                               <span key={item.id} onClick={this.getDetails} >
