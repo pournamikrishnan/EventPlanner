@@ -30,6 +30,18 @@ class Events extends Component {
     this.getDetails.bind(this);
   }
 
+   handleAdd = (e) => {
+     for (i in modelInstance.currentEventList.data) {
+       if (e.target.id == modelInstance.currentEventList.data[i].id || e.target.parentNode.id == modelInstance.currentEventList.data[i].id){
+         if (e.target.value) {
+         modelInstance.addEvent(modelInstance.currentEventList.data[i], e.target.value)
+         return;
+         } else if (e.target.parentNode.value) {
+         modelInstance.addEvent(modelInstance.currentEventList.data[i], e.target.parentNode.value)
+        }
+       }
+      }
+   }
 
   loadData (props) {
     props.date.setHours(props.date.getHours() + 2)
@@ -54,6 +66,11 @@ class Events extends Component {
 
   componentDidMount = () => {
     this.loadData(this.props)
+    modelInstance.addObserver(this)
+  }
+
+  componentWillUnmount() {
+    modelInstance.removeObserver(this)
   }
 
   getDetails = (event) => {
@@ -70,7 +87,7 @@ class Events extends Component {
       case 'INITIAL':
         return (
           <div className='Events'>
-            <div className='loading text-white'> Loading... </div>
+            <div className='loading'> Loading... </div>
           </div>
         )
         break;
@@ -108,6 +125,11 @@ class Events extends Component {
                               <span key={item.id} onClick={this.getDetails} >
                                 <Link to="/details"><b id={item.id}>{item.name}</b></Link><br/>
                               </span>
+                              <div className="OneEvent col-sm-2 m-auto" id={item.id} >
+                                <button id={item.id} value='1' className='removeEvent btn btn-success ' onClick={this.handleAdd}>
+                                  Add
+                                </button>
+                              </div>
                              {item.dates.start.localTime}<br/>
                              {item._embedded.venues[0].city.name}, {item._embedded.venues[0].state.name}
                               {
@@ -163,8 +185,9 @@ class Events extends Component {
       default:
         return (
           <div className='Events'>
-          <div id='Events'>
-            <h3 className='failed text-light' > <b>No events were found on this date on this location, please try again.</b> </h3>
+          <div id='Events' className='col-sm-8'>
+            <br/>
+            <div className='failed'> <b>No events were found on this date on this location, please try again.</b> </div>
           </div>
 
           </div>
