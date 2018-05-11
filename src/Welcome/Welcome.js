@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Welcome.css';
 import user_logo from '../media/user_logo.png';
 import { Link } from 'react-router-dom';
-import USAMap from "react-usa-map"
+import USAMap from "../usa/index"
 import Events from '../Events/Events';
 import WhereWhen from '../WhereWhen/WhereWhen';
 import { modelInstance } from '../data/EventModel';
@@ -39,12 +39,12 @@ class Welcome extends Component {
           <Typed
             strings={['Plan your day...!']}
             typeSpeed={40}
-            backSpeed={50} 
+            backSpeed={50}
 
-            showCursor={false} 
+            showCursor={false}
           />
         </h1>
-        
+
         <Link to="/wherewhen">
         <div className="App">
             <USAMap height={400} width='auto' onClick={this.handleClick}/>
