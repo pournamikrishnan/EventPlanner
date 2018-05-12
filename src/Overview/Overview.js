@@ -95,7 +95,10 @@ class Overview extends Component {
                       <div className="row">
                         <div className='col-sm-3 m-auto'>
                           <div className="font1">
-                            <i className="fa fa-clock-o"></i>  {scheduledEvent.dates.start.localTime}
+                            <i className="fa fa-clock-o"></i>  {scheduledEvent.dates.start.localDate}
+                          </div>
+                          <div className="font1">
+                            <i className="fa fa-calendar-o"></i> {scheduledEvent.dates.start.localTime}
                             </div>
                         </div>
                         <div className='col-sm-6'>
@@ -134,7 +137,10 @@ class Overview extends Component {
                       <div className="row">
                         <div className='col-sm-3 m-auto'>
                           <div className="font1">
-                            <i className="fa fa-clock-o"></i> {scheduledEvent.dates.start.localTime}
+                            <i className="fa fa-clock-o"></i> {scheduledEvent.dates.start.localDate}
+                          </div>
+                          <div className="font1">
+                            <i className="fa fa-calendar-o"></i> {scheduledEvent.dates.start.localTime}
                           </div>
                         </div>
                         <div className='col-sm-6'>
@@ -173,8 +179,11 @@ class Overview extends Component {
                       <div className="row">
                         <div className='col-sm-3 m-auto'>
                           <div className="font1">
-                            <i className="fa fa-clock-o"></i> {scheduledEvent.dates.start.localTime}
-                            </div>
+                            <i className="fa fa-clock-o"></i> {scheduledEvent.dates.start.localDate}
+                          </div>
+                          <div className="font1">
+                            <i className="fa fa-calendar-o"></i> {scheduledEvent.dates.start.localTime}
+                          </div>
                         </div>
                         <div className='col-sm-6'>
                           <b>{scheduledEvent.name}</b><br/>
@@ -200,9 +209,7 @@ class Overview extends Component {
 
 
           </div>
-        <Link to="/printout">
-          <button type="button" className="btn btn-success mt-4">Print Full Schedule</button>
-        </Link>
+          <button type="button" onClick={() => window.print()} className="btn btn-success mt-4">Print Full Schedule</button>
 </div>
 
       </div>

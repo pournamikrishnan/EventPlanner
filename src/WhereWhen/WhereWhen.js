@@ -67,22 +67,23 @@ class WhereWhen extends Component {
     morningEventList.length = 0;
     afternoonEventList.length = 0;
     eveningEventList.length = 0;
-    for (i in modelInstance.currentEventList.data) {
-      if (modelInstance.currentEventList.data[i].dates.start.localTime != undefined) {
-        var timeElement = modelInstance.currentEventList.data[i].dates.start.localTime.split(':')
-        var timeInSeconds = (+timeElement[0])*60*60+(+timeElement[1])*60+(+timeElement[2]);
-        if (timeInSeconds < 43200) {
-          morningEventList.push(modelInstance.currentEventList.data[i])
-        }
-        else if (timeInSeconds >= 43200 && timeInSeconds < 64800){
-          afternoonEventList.push(modelInstance.currentEventList.data[i])
-        }
-        else if (timeInSeconds >= 64800 && timeInSeconds < 86400){
-          eveningEventList.push(modelInstance.currentEventList.data[i])
+    if(modelInstance.currentEventList){
+      for (i in modelInstance.currentEventList.data) {
+        if (modelInstance.currentEventList.data[i].dates.start.localTime != undefined) {
+          var timeElement = modelInstance.currentEventList.data[i].dates.start.localTime.split(':')
+          var timeInSeconds = (+timeElement[0])*60*60+(+timeElement[1])*60+(+timeElement[2]);
+          if (timeInSeconds < 43200) {
+            morningEventList.push(modelInstance.currentEventList.data[i])
+          }
+          else if (timeInSeconds >= 43200 && timeInSeconds < 64800){
+            afternoonEventList.push(modelInstance.currentEventList.data[i])
+          }
+          else if (timeInSeconds >= 64800 && timeInSeconds < 86400){
+            eveningEventList.push(modelInstance.currentEventList.data[i])
+          }
         }
       }
     }
-
     modelInstance.morningEventList = morningEventList;
     modelInstance.afternoonEventList = afternoonEventList;
     modelInstance.eveningEventList = eveningEventList;
