@@ -134,7 +134,7 @@ class Sidebar extends Component {
                     </div>
                     <ul className="list-group">
                     {evening.map(scheduledEvent =>
-                      <li key={scheduledEvent.id} className="list-group-item">
+                      <li key={scheduledEvent.id} className="list-group-item p-0">
                           <div className="OneEvent" id={scheduledEvent.id}>
                         <div className="container-fluid py-2">
                           <div className="row">

@@ -134,11 +134,13 @@ class Events extends Component {
                               <span key={item.id} onClick={this.getDetails} >
                                 <Link to="/details"><b id={item.id}>{item.name}</b></Link><br/>
                               </span>
-                              <div className="OneEvent col-sm-2 m-auto" id={item.id} >
-                                <button id={item.id} value='1' className='removeEvent btn btn-success ' onClick={this.handleAdd}>
-                                  Add
-                                </button>
-                              </div>
+                              {
+                                // <div className="OneEvent col-sm-2 m-auto" id={item.id} >
+                                //   <button id={item.id} value='1' className='removeEvent btn btn-success ' onClick={this.handleAdd}>
+                                //     Add
+                                //   </button>
+                                // </div>
+                              }
                              {item.dates.start.localTime}<br/>
                              {item._embedded.venues[0].city.name}, {item._embedded.venues[0].state.name}
                               {
