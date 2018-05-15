@@ -99,7 +99,7 @@ class Events extends Component {
     eventsEmbedded.length = 0;
     eventsPlace.length = 0;
     for (i in data) {
-      if (data[i].dates.start.localDate == Intl.DateTimeFormat('sv-SV').format(this.props.date)) {
+      // if (data[i].dates.start.localDate == Intl.DateTimeFormat('sv-SV').format(this.props.date)) {
           if (data[i]._embedded) {
             eventsEmbedded.push(data[i])
             modelInstance.currentEventList = eventsEmbedded;
@@ -108,7 +108,7 @@ class Events extends Component {
             eventsPlace.push(data[i])
             modelInstance.currentEventList = eventsPlace;
           }
-        }
+        // }
 
       }
 
@@ -156,19 +156,23 @@ class Events extends Component {
 
                         )
                         }
+                        {
+                          eventsPlace.map((item, index) => {
+                                  return (
+                                    <div key={item.id}>
+                                        <img src={item.images[0].url}/>
+                                        <p className="legend">
+                                          <span key={item.id} onClick={this.getDetails} >
+                                            <Link to="/details"><b id={item.id}>{item.name}</b></Link><br/>
+                                          </span>
+                                          Time: {item.dates.start.localTime}<br/>
+                                          {item.place.city.name}
+                                        </p>
+                                    </div>
+                                  );
+                              })
+                        }
                       </Carousel>
-                      <ul className="list-group">
-                        {eventsPlace.map(event =>
-                            <li key={event.id} onClick={this.getDetails} className="list-group-item">
-                              <div className="OneEvent" id={event.id}>
-                                  <img alt='eventImg' id='eventImg' src={event.images[0].url} width="100" height="100"></img>
-                                <Link to="/details"><b id={event.id}>{event.name}</b></Link><br/>
-                                Time: {event.dates.start.localTime}<br/>
-                                {event.place.city.name}
-                              </div>
-                            </li>
-                          )}
-                      </ul>
                   </div>
               </div>
             ) }

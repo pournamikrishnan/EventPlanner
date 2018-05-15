@@ -75,7 +75,7 @@ class SelectEvent extends Component {
                     </a>
                   </div>
                   <div id="collapseOne" className="collapse show " role="tabpanel" aria-labelledby="headingOne">
-                    {modelInstance.morningEventList.length != 0 ? (
+                    {(modelInstance.morningEventList && modelInstance.morningEventList.length != 0) ? (
                       modelInstance.morningEventList.map(event =>
                         <div key={event.id} className="card-block">
                           <div className="container-fluid py-2">
@@ -121,7 +121,7 @@ class SelectEvent extends Component {
                                 </a>
                   </div>
                   <div id="collapseTwo" className="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    {modelInstance.afternoonEventList.length != 0 ? (
+                    {(modelInstance.afternoonEventList && modelInstance.afternoonEventList.length != 0) ? (
                       modelInstance.afternoonEventList.map(event =>
                         <div key={event.id} className="card-block ">
                           <div className="container-fluid py-2">
@@ -167,7 +167,7 @@ class SelectEvent extends Component {
                     </a>
                   </div>
                   <div id="collapseThree" className="collapse" role="tabpanel" aria-labelledby="headingThree">
-                    {modelInstance.eveningEventList.length != 0 ? (
+                    {(modelInstance.eveningEventList && modelInstance.eveningEventList.length != 0) ? (
                       modelInstance.eveningEventList.map(event =>
                         <div key={event.id} className="card-block">
                           <div className="container-fluid py-2">
