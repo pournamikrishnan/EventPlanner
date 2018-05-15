@@ -10,6 +10,7 @@ const EventModel = function () {
   let scheduleAfternoon = new Array();
   let scheduleEvening = new Array();
   let timeDivideSchedule = new Array();
+  let currentEventList = new Array();
   let i;
   let state = '';
   let startTime;
@@ -52,7 +53,6 @@ const EventModel = function () {
   };
 
   this.getStateCode = function() {
-        console.log(stateCode);
     if (localStorage.getItem("stateCode")){
       return localStorage.getItem("stateCode");
       }
@@ -140,8 +140,8 @@ const EventModel = function () {
 
   // API Calls
 
-  this.getEventsPerState = function (state, startTime, endTime) {
-    let url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=ajp0wkSehryzWQo24JvhNAuCF6RX2wyN&stateCode=' + state + '&startDateTime=' + startTime + '&endDateTime=' + endTime +'&size=10' ;
+  this.getEventsPerState = function (state, startTime, endTime, filter) {
+    let url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=ajp0wkSehryzWQo24JvhNAuCF6RX2wyN&stateCode=' + state + '&startDateTime=' + startTime + '&endDateTime=' + endTime + '&keyword=' + filter + '&size=10' ;
     return fetch(url)
       .then(processResponse)
       .catch(handleError)
@@ -178,6 +178,7 @@ const EventModel = function () {
 
   this.addObserver = function (observer) {
     observers.push(observer);
+    console.log(observer);
   };
 
   this.removeObserver = function (observer) {

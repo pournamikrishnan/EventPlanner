@@ -9,28 +9,20 @@ import { modelInstance } from '../data/EventModel';
 import Typed from 'react-typed';
 
 class Welcome extends Component {
-/*  constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-      stateName: ''
+      status: 'INITIAL',
+      stateName: '',
     }
     this.handleClick = this.handleClick.bind(this);
-  }*/
-
-
-  classifyEvent (e) {
-    console.log(e.target.id) //to be continued on
   }
 
   handleClick = (event) => {
-    //console.log(event.target.dataset.name)
     modelInstance.setStateCode(event.target.dataset.name);
-    //this.setState({stateName: event.target.dataset.name}, () => alert('hej'))
     }
 
-  printFunk = () => {
-    console.log(this.state);
-  }
+
 
   render() {
     return (

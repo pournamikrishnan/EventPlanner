@@ -25,14 +25,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        
+
        <nav className="navbar navbar-expand-md navbar-light fixed-top bg-green shadow">
-       <div className="container">
-              <a className="navbar-brand text-white" href="#" > <img src={Logo} height="50"/> Let's</a>
-      {/*   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-        </div>
+         <div className="container">
+                <a className="navbar-brand text-white" href="/" > <img src={Logo} height="50"/> Let's </a>
+
+          </div>
       </nav>
 
           {/* We rended diffrent component based on the path */}
